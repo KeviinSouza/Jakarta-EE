@@ -7,6 +7,7 @@ import javax.ws.rs.core.*;
 import br.com.jakarta.entidade.AgendamentoEmail;
 import br.com.jakarta.servico.AgendamentoEmailServico;
 
+@Path("emails")
 public class AgendamentoEmailController {
 	
 	@Inject
