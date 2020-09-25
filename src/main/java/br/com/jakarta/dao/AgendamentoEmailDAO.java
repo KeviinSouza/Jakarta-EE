@@ -14,15 +14,22 @@ public class AgendamentoEmailDAO {
 	private EntityManager entity;
 
 	public List<AgendamentoEmail> listar() {
-		return entity.createQuery("SELECT ae FROM AgendamentoEmail ae", AgendamentoEmail.class).getResultList();
+		return entity
+				.createQuery("SELECT ae FROM AgendamentoEmail ae", AgendamentoEmail.class).getResultList();
 	}
 
 	public void inserir(AgendamentoEmail agendamentoEmail) {
 		entity.persist(agendamentoEmail);
 	}
-
-	public List<AgendamentoEmail> listarNaoAgendados() {
-		return entity.createQuery("SELECT ae FROM AgendamentoEmail ae WHERE ", AgendamentoEmail.class).getResultList();
+	
+	public List<AgendamentoEmail> listarNaoAgendado() {
+		return entity
+				.createQuery("SELECT ae FROM AgendamentoEmail ae WHERE ae.agendado = false",
+						AgendamentoEmail.class).getResultList();
+	}
+	
+	public void alterar(AgendamentoEmail agendamentoEmail) {
+		entity.merge(agendamentoEmail);
 	}
 
 }
